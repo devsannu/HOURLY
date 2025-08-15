@@ -1,0 +1,93 @@
+/* Reset base nav link style */
+.navbar-nav .nav-link {
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* On hover - enlarge and recolor */
+.navbar-nav .nav-link:hover {
+  background-color: #28a7451a; /* soft green background */
+  color: #28a745 !important;   /* green text */
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
+}
+
+/* Active or open dropdown state */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  background-color: #28a7451a;
+  color: #28a745 !important;
+}
+
+/* Dropdown menu style */
+.dropdown-menu {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #28a745;
+}
+
+/* Logo text styling */
+.navbar-brand {
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.8rem;
+}
+
+/* Join button */
+.btn-outline-dark {
+  border-radius: 20px;
+  padding: 6px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+/* Language icon spacing */
+.navbar-nav .bi {
+  margin-right: 5px;
+}
+
+/* Mobile toggle animation (optional) */
+.navbar-toggler {
+  border: none;
+  transition: transform 0.2s ease;
+}
+.navbar-toggler:hover {
+  transform: rotate(90deg);
+}
+::placeholder {
+  color: #888;
+}
+
+.btn-outline-light:hover {
+  background: #fff;
+  color: #000;
+}
+.search-form input[type="search"] {
+  border: none;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.search-form input[type="search"]::placeholder {
+  color: #ccc;
+}

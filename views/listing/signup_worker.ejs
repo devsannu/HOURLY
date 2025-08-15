@@ -1,0 +1,144 @@
+<% layout("/layouts/other_boilerplate") %>
+
+<div class="signup-wrapper d-flex justify-content-center align-items-center">
+    <div class="card signup-card p-5">
+        <h2 class="text-center mb-4 fw-bold">Sign Up as HOURLIER</h2>
+
+        <form action="/listings" method="POST" class="w-100">
+            <input type="hidden" name="role" value="worker">
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input type="text" name="Listing[full_name]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" name="Listing[email]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Phone</label>
+                <input type="text" name="Listing[phone]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Password</label>
+                <input type="password" name="Listing[password_hash]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Hourly Rate (₹)</label>
+                <input type="number" name="Listing[hourly_rate]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Skill Categories</label>
+                <input type="text" name="Listing[skill_category]" class="form-control" placeholder="Comma separated">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Languages</label>
+                <input type="text" name="Listing[languages]" class="form-control" placeholder="Comma separated">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Experience (years)</label>
+                <input type="number" name="Listing[experience_years]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">City</label>
+                <input type="text" name="Listing[location][city]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">State</label>
+                <input type="text" name="Listing[location][state]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Pincode</label>
+                <input type="text" name="Listing[location][pincode]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Status</label>
+                <select name="Listing[availability][status]" class="form-control">
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                    <option value="busy">Busy</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Working Days</label>
+                <input type="text" name="Listing[availability][working_hours][0][day]" class="form-control" placeholder="e.g., Monday, Tuesday">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Start Time</label>
+                <input type="time" name="Listing[availability][working_hours][0][start_time]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">End Time</label>
+                <input type="time" name="Listing[availability][working_hours][0][end_time]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">About</label>
+                <textarea name="Listing[about]" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Profile Picture URL</label>
+                <input type="text" name="Listing[profile_picture_url]" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Is Verified?</label>
+                <select name="Listing[is_verified]" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Document Type</label>
+                <input type="text" name="Listing[documents][0][doc_type]" class="form-control" placeholder="Aadhaar, License">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-semibold">Document URL</label>
+                <input type="text" name="Listing[documents][0][doc_url]" class="form-control" placeholder="https://...">
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 py-2 fw-semibold">Apply Now</button>
+        </form>
+
+        <p class="text-center mt-3">
+            Already have an account? <a href="/login" class="text-decoration-none fw-semibold">Login</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    .signup-wrapper {
+        min-height: calc(100vh - 80px);
+        background: linear-gradient(135deg, #1cc88a, #4e73df);
+        padding: 40px;
+    }
+    .signup-card {
+        width: 100%;
+        max-width: 700px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        background: #fff;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #1cc88a;
+    }
+</style>

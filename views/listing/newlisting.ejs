@@ -1,0 +1,83 @@
+<%  layout("/layouts/other_boilerplate")      %>
+<body class="bg-light">
+  <div class="container mt-5 p-4 bg-white shadow rounded">
+    <h2>APPLY TO BECOME HOURLIER</h2>
+    <form action="/listings" method="POST">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Full Name</label>
+          <input type="text" name="Listing[full_name]" class="form-control" required>
+
+          <label>Email</label>
+          <input type="email" name="Listing[email]" class="form-control" required>
+
+          <label>Phone</label>
+          <input type="text" name="Listing[phone]" class="form-control" required>
+
+          <label>Password (hashed or plain)</label>
+          <input type="text" name="Listing[password_hash]" class="form-control" required>
+
+          <label>Hourly Rate (₹)</label>
+          <input type="number" name="Listing[hourly_rate]" class="form-control" required>
+
+          <label>Skill Categories (comma separated)</label>
+          <input type="text" name="Listing[skill_category]" class="form-control">
+          
+          <label>Languages (comma separated)</label>
+          <input type="text" name="Listing[languages]" class="form-control">
+
+          <label>Experience (years)</label>
+          <input type="number" name="Listing[experience_years]" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label>City</label>
+          <input type="text" name="Listing[location][city]" class="form-control">
+
+          <label>State</label>
+          <input type="text" name="Listing[location][state]" class="form-control">
+
+          <label>Pincode</label>
+          <input type="text" name="Listing[location][pincode]" class="form-control">
+
+          <label>Status</label>
+          <select name="Listing[availability][status]" class="form-control">
+            <option value="online">Online</option>
+            <option value="offline">Offline</option>
+            <option value="busy">Busy</option>
+          </select>
+
+          <label>Working Days (comma separated)</label>
+          <input type="text" name="Listing[availability][working_hours][0][day]" class="form-control" placeholder="e.g., Monday, Tuesday">
+
+          <label>Start Time</label>
+          <input type="time" name="Listing[availability][working_hours][0][start_time]" class="form-control">
+
+          <label>End Time</label>
+          <input type="time" name="Listing[availability][working_hours][0][end_time]" class="form-control">
+
+          <label>About</label>
+          <textarea name="Listing[about]" class="form-control"></textarea>
+
+          <label>Profile Picture URL</label>
+          <input type="text" name="Listing[profile_picture_url]" class="form-control">
+
+          <label>Is Verified?</label>
+          <select name="Listing[is_verified]" class="form-control">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+
+          <label>Document Type</label>
+          <input type="text" name="Listing[documents][0][doc_type]" class="form-control" placeholder="Aadhaar, License">
+
+          <label>Document URL</label>
+          <input type="text" name="Listing[documents][0][doc_url]" class="form-control" placeholder="https://...">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+</body>
+

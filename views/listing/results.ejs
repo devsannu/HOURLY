@@ -1,0 +1,28 @@
+<% layout("/layouts/other_boilerplate") %>
+<a href="/" style="text-decoration: none; color: inherit;">
+  <button class="btn btn-secondary">← Back to Home</button>
+</a>
+
+<div class="container py-5">
+  <h2 class="mb-4">Results for "<%= query.search %>"</h2>
+
+  <% if (allListing.length === 0) { %>
+    <p class="text-muted">No workers found matching your search.</p>
+  <% } else { %>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% allListing.forEach(worker => { %>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= worker.profile_picture_url %>" class="card-img-top" alt="<%= worker.full_name %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= worker.full_name %></h5>
+              <p class="card-text"><%= worker.skill_category.join(", ") %></p>
+              <p class="text-muted">₹<%= worker.hourly_rate %>/hr</p>
+              <a href="/listing/<%= worker._id %>" class="btn btn-outline-primary w-100">View Profile</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

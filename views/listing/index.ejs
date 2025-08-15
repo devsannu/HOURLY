@@ -1,0 +1,61 @@
+<% layout("/layouts/index_boilerplate") %>
+
+<body style="background: #000; color: white; position: relative; min-height: 100vh; overflow-x: hidden;">
+  <!-- Hero Video or Background Image -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    <video autoplay muted loop style="object-fit: cover; width: 100%; height: 100%;">
+      <source src="/videos/hero-bg.mp4" type="video/mp4">
+    </video>
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5);"></div>
+  </div>
+
+  <div class="container position-relative z-2 text-white d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+    <!-- Heading -->
+    <h1 class="display-4 fw-bold text-center mb-4">OUR HOURLIER<br>will take it from here</h1>
+
+<!-- Search Bar -->
+<form class="search-form d-flex justify-content-center w-100" action="/listings" method="GET" style="max-width: 700px;">
+  <input
+    class="form-control me-2 rounded-pill px-4 py-3"
+    type="search"
+    placeholder="Search for workers or services (e.g. plumber, electrician)"
+    name="search"
+    aria-label="Search"
+    style="flex-grow: 1; min-width: 0; font-size: 1.1rem;"
+  >
+  <button
+    class="btn btn-primary rounded-pill px-4 py-3"
+    type="submit"
+    style="font-size: 1.1rem;"
+  >
+    🔍 Search
+  </button>
+</form>
+
+
+
+    <!-- Skill Tags -->
+    <div class="d-flex flex-wrap justify-content-center mt-4 gap-2">
+      <% const sampleTags = ['Home Repair & Maintenance', 'Cleaning Services', 'Home & Personal Services', 'Installation & Setup', ' Interior & Home Design', "Beauty & Wellness"," Moving & Shifting","Security & Locksmith","Outdoor & Gardening","Miscellaneous"]; %>
+      <% sampleTags.forEach(tag => { %>
+        <a href="/listings?search=<%= encodeURIComponent(tag) %>" class="btn btn-outline-light rounded-pill px-4 py-2 d-flex align-items-center gap-2">
+          <span><%= tag %></span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      <% }) %>
+    </div>
+
+    <!-- Trusted Logos -->
+    <div class="text-center mt-5">
+      <small class="text-white-50">Trusted by:</small>
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 mt-2">
+        <img src="/images/meta.svg" alt="Meta" height="30">
+        <img src="/images/google.svg" alt="Google" height="30">
+        <img src="/images/netflix.svg" alt="Netflix" height="30">
+        <img src="/images/pg.svg" alt="P&G" height="30">
+        <img src="/images/paypal.svg" alt="PayPal" height="30">
+        <img src="/images/payoneer.svg" alt="Payoneer" height="30">
+      </div>
+    </div>
+  </div>
+</body>

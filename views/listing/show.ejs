@@ -1,0 +1,126 @@
+<% layout("/layouts/other_boilerplate") %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <% if (user) { %>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card shadow-lg border-0">
+          <div class="card-body p-5">
+
+            <!-- Header: Profile Picture + Name -->
+            <div class="row mb-4">
+              <div class="col-md-3 text-center">
+                <img src="<%= user.profile_picture_url %>" alt="Profile Picture" class="img-fluid rounded-circle border" width="120" height="120">
+              </div>
+              <div class="col-md-9 d-flex flex-column justify-content-center">
+                <h3 class="fw-bold mb-1"><%= user.full_name %></h3>
+                <p class="text-muted mb-1"><%= user.skill_category.join(", ") %></p>
+                <p class="fw-semibold fs-5 text-primary mb-0">₹<%= user.hourly_rate %>/hr</p>
+                <span><%= user.is_verified ? "✅ Verified" : "❌ Not Verified" %></span>
+              </div>
+            </div>
+
+            <!-- Contact + Location -->
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="card border-0 bg-light p-3 h-100">
+                  <h5 class="fw-semibold mb-2">📞 Contact</h5>
+                  <p class="mb-1">Email: <%= user.email %></p>
+                  <p>Phone: <%= user.phone %></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card border-0 bg-light p-3 h-100">
+                  <h5 class="fw-semibold mb-2">📍 Location</h5>
+                  <p><%= user.location.city %>, <%= user.location.state %> - <%= user.location.pincode %></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="card border-0 bg-light p-3 my-4">
+              <h5 class="fw-semibold mb-2">🕒 Availability</h5>
+              <p>Status: <%= user.availability.status %></p>
+              <ul class="mb-0">
+                <% user.availability.working_hours.forEach(hour => { %>
+                  <li><strong><%= hour.day.join(", ") %>:</strong> <%= hour.start_time %> - <%= hour.end_time %></li>
+                <% }) %>
+              </ul>
+            </div>
+
+            <!-- Experience & Languages -->
+            <div class="card border-0 bg-light p-3 mb-4">
+              <h5 class="fw-semibold mb-2">💼 Experience & Languages</h5>
+              <p><%= user.experience_years %> years of experience</p>
+              <p>Languages: <%= user.languages.join(", ") %></p>
+            </div>
+
+            <!-- Rating -->
+            <div class="card border-0 bg-light p-3 mb-4">
+              <h5 class="fw-semibold mb-2">⭐ Rating</h5>
+              <p>Average: <%= user.rating.average %> | Reviews: <%= user.rating.total_reviews %></p>
+            </div>
+
+            <!-- Reviews -->
+            <% if (user.reviews.length > 0) { %>
+            <div class="card border-0 bg-light p-3 mb-4">
+              <h5 class="fw-semibold mb-2">📝 Reviews</h5>
+              <ul class="list-group list-group-flush">
+                <% user.reviews.forEach(review => { %>
+                  <li class="list-group-item bg-transparent border-0 ps-0">
+                    "<%= review.comment %>" - <%= review.rating %>⭐ 
+                    <small class="text-muted">(<%= new Date(review.created_at).toLocaleDateString() %>)</small>
+                  </li>
+                <% }) %>
+              </ul>
+            </div>
+            <% } %>
+
+            <!-- About -->
+            <div class="card border-0 bg-light p-3 mb-4">
+              <h5 class="fw-semibold mb-2">🧾 About</h5>
+              <p><%= user.about %></p>
+            </div>
+
+            <!-- Documents -->
+            <% if (user.documents.length > 0) { %>
+            <div class="card border-0 bg-light p-3 mb-4">
+              <h5 class="fw-semibold mb-2">📄 Documents</h5>
+              <ul class="mb-0">
+                <% user.documents.forEach(doc => { %>
+                  <li><%= doc.doc_type %>: <a href="<%= doc.doc_url %>" target="_blank">View</a></li>
+                <% }) %>
+              </ul>
+            </div>
+            <% } %>
+
+            <!-- Timestamps -->
+            <div class="text-muted small">
+              <p>Created: <%= new Date(user.created_at).toLocaleString() %></p>
+              <p>Updated: <%= new Date(user.updated_at).toLocaleString() %></p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-3 mt-4">
+              <form method="GET" action="/listing/<%= user.id %>/edit">
+                <button class="btn btn-outline-primary px-4">✏️ Edit</button>
+              </form>
+              <form method="POST" action="/listing/<%= user.id %>?_method=DELETE">
+                <button class="btn btn-outline-danger px-4">🗑️ Delete</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+    <!-- User Not Found -->
+    <div class="text-center p-5 bg-white shadow rounded">
+      <h3 class="text-danger">❌ User not found</h3>
+      <p class="text-muted">The profile you are trying to view does not exist or has been removed.</p>
+    </div>
+    <% } %>
+  </div>
+</body>
